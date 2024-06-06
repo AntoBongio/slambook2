@@ -10,13 +10,12 @@ using namespace std;
 typedef vector<Sophus::SE3d, Eigen::aligned_allocator<Sophus::SE3d>> TrajectoryType;
 typedef Eigen::Matrix<double, 6, 1> Vector6d;
 
-// 在pangolin中画图，已写好，无需调整
 void showPointCloud(
     const vector<Vector6d, Eigen::aligned_allocator<Vector6d>> &pointcloud);
 
 int main(int argc, char **argv) {
-    vector<cv::Mat> colorImgs, depthImgs;    // 彩色图和深度图
-    TrajectoryType poses;         // 相机位姿
+    vector<cv::Mat> colorImgs, depthImgs;    
+    TrajectoryType poses;         
 
     ifstream fin("/home/antonino/Desktop/slam/slambook2/ch5/rgbd/pose.txt");
     if (!fin) {

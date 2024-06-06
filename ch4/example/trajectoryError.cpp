@@ -17,12 +17,16 @@ void DrawTrajectory(const TrajectoryType &gt, const TrajectoryType &esti);
 TrajectoryType ReadTrajectory(const string &path);
 
 int main(int argc, char **argv) {
+
+  // Reading Trajectories
   TrajectoryType groundtruth = ReadTrajectory(groundtruth_file);
   TrajectoryType estimated = ReadTrajectory(estimated_file);
+
+  // Ensures that both trajectories are non-empty and of the same size
   assert(!groundtruth.empty() && !estimated.empty());
   assert(groundtruth.size() == estimated.size());
 
-  // compute rmse
+  // Calculating RMSE
   double rmse = 0;
   for (size_t i = 0; i < estimated.size(); i++) {
     Sophus::SE3d p1 = estimated[i], p2 = groundtruth[i];

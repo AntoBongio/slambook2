@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     return 0;
   }
 
-  // Sow image metadata
+  // See image metadata
   cout << "Image cols [" << image.cols << "], rows [" << image.rows << "], channels [" << image.channels() << "]" << endl;
   cv::imshow("image", image);    
   cv::waitKey(0);            
@@ -31,10 +31,10 @@ int main(int argc, char **argv) {
   chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
   for (size_t y = 0; y < image.rows; y++) {
     // use cv::Mat::ptr to get a ptr to each row
-    unsigned char *row_ptr = image.ptr<unsigned char>(y);  // row_ptr是第y行的头指针
+    unsigned char *row_ptr = image.ptr<unsigned char>(y);  // row_ptr
     for (size_t x = 0; x < image.cols; x++) {
       // read the pixel on (x,y) x=column, y=row
-      unsigned char *data_ptr = &row_ptr[x * image.channels()]; // data_ptr 指向待访问的像素数据
+      unsigned char *data_ptr = &row_ptr[x * image.channels()]; // data_ptr 
       // visit the pixel in each channel
       for (int c = 0; c != image.channels(); c++) {
         unsigned char data = data_ptr[c]; 
