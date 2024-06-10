@@ -24,14 +24,13 @@ public:
     _estimate << 0, 0, 0;
   }
 
-  // 更新
+  // overrid the addition
   virtual void oplusImpl(const double *update) override {
     _estimate += Eigen::Vector3d(update);
   }
 
   // the dummy read/write function
   virtual bool read(istream &in) {}
-
   virtual bool write(ostream &out) const {}
 };
 
